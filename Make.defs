@@ -1,0 +1,3 @@
+ifneq ($(CONFIG_EXAMPLES_PINBALL),)
+CONFIGURED_APPS += $(APPDIR)/examples/pinball
+endif

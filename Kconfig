@@ -1,0 +1,41 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config EXAMPLES_PINBALL
+	tristate "Space Cadet Pinball"
+	default n
+	select HAVE_CXX
+	select HAVE_CXXINITIALIZE
+	---help---
+		Enable Space Cadet Pinball game for OpenVela
+
+if EXAMPLES_PINBALL
+
+config EXAMPLES_PINBALL_PROGNAME
+	string "Program name"
+	default "pinball"
+	---help---
+		This is the name of the program that will be used when the NSH ELF
+		program is installed.
+
+config EXAMPLES_PINBALL_PRIORITY
+	int "Pinball task priority"
+	default 100
+
+config EXAMPLES_PINBALL_STACKSIZE
+	int "Pinball stack size"
+	default 32768
+	---help---
+		This is the stack size that will be used when starting the Pinball game.
+		A larger stack is needed for C++ applications.
+
+config EXAMPLES_PINBALL_HEAPSIZE
+	int "Pinball heap size"
+	depends on MM_TASK_HEAP
+	default 65536
+	---help---
+		This is the heap size that will be allocated for the Pinball game.
+
+endif
